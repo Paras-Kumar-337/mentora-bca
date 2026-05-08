@@ -58,8 +58,12 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
 
           <div className="bg-white rounded-2xl shadow p-6 text-center hover:-translate-y-1 transition-all duration-200">
-            <div className="w-16 h-16 mx-auto rounded-full bg-primary text-white flex items-center justify-center text-xl font-semibold">
-              PK
+            <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-md">
+              <img
+                src="/team/paras.png"
+                alt="Paras Kumar"
+                className="w-full h-full object-cover"
+              />
             </div>
 
             <h3 className="mt-4 font-semibold text-primary">
@@ -72,8 +76,12 @@ export default function About() {
           </div>
 
           <div className="bg-white rounded-2xl shadow p-6 text-center hover:-translate-y-1 transition-all duration-200">
-            <div className="w-16 h-16 mx-auto rounded-full bg-primary text-white flex items-center justify-center text-xl font-semibold">
-              PY
+            <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-md">
+              <img
+                src="/team/pragati.jpg"
+                alt="Pragati Yadav"
+                className="w-full h-full object-cover"
+              />
             </div>
 
             <h3 className="mt-4 font-semibold text-primary">
@@ -86,8 +94,12 @@ export default function About() {
           </div>
 
           <div className="bg-white rounded-2xl shadow p-6 text-center hover:-translate-y-1 transition-all duration-200">
-            <div className="w-16 h-16 mx-auto rounded-full bg-primary text-white flex items-center justify-center text-xl font-semibold">
-              KY
+            <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-md">
+              <img
+                src="/team/komal.jpg"
+                alt="Komal Yadav"
+                className="w-full h-full object-cover"
+              />
             </div>
 
             <h3 className="mt-4 font-semibold text-primary">
