@@ -70,7 +70,7 @@ export default function About() {
               Paras Kumar
             </h3>
 
-            <p className="text-sm text-textMuted mt-1">
+            <p className="text-sm text-primary mt-1">
               23BCA019
             </p>
           </div>
@@ -88,7 +88,7 @@ export default function About() {
               Pragati Yadav
             </h3>
 
-            <p className="text-sm text-textMuted mt-1">
+            <p className="text-sm text-primary mt-1">
               23BCA020
             </p>
           </div>
@@ -106,7 +106,7 @@ export default function About() {
               Komal Yadav
             </h3>
 
-            <p className="text-sm text-textMuted mt-1">
+            <p className="text-sm text-primary mt-1">
               23BCA040
             </p>
           </div>
