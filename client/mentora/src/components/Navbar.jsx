@@ -5,7 +5,9 @@ export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const isPublicPage = ["/", "/login", "/signup"].includes(location.pathname);
-  const isLoggedIn = !!localStorage.getItem("token");
+  const isLoggedIn =
+    !!localStorage.getItem("token") ||
+    !!localStorage.getItem("userInfo");
 
   function handleLogout() {
     localStorage.removeItem("userInfo");
