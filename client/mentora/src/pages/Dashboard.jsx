@@ -686,7 +686,7 @@ export default function Dashboard() {
                             <h3 className="font-semibold text-textMain">My Tasks</h3>
                             <button
                                 onClick={handleClearCompleted}
-                                className="text-sm text-red-500 bg-red-50 hover:bg-red-100 px-3 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium hover:scale-[1.03]"
+                                className="text-sm text-red-500 border border-red-500 hover:bg-red-100 px-3 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium hover:scale-[1.03]"
                             >
                                 Clear Done
                             </button>
