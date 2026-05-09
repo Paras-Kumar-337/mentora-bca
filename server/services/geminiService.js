@@ -7,7 +7,7 @@ const genAI =
 
 const model =
   genAI.getGenerativeModel({
-    model: "gemini-3.1-flash-lite",
+    model: "gemini-3.0-flash-preview",
   });
 
 export async function askGemini(
