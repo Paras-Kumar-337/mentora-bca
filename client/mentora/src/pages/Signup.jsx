@@ -147,19 +147,31 @@ export default function Signup() {
     <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
 
-      <div className="flex flex-col items-center mt-12 flex-1">
+      <div className="flex flex-col items-center mt-10 md:mt-12 flex-1 px-4 animate-fadeIn">
 
-        <div className="flex justify-center items-center gap-6 mb-10">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-5 md:gap-6 mb-10 text-center md:text-left">
           <div className="flex flex-col items-center">
-            <img src={logo} alt="logo" className="h-25" />
+            <img
+              src={logo}
+              alt="logo"
+              className="h-24 md:h-25 drop-shadow-lg hover:scale-[1.02] transition-all duration-300"
+            />
           </div>
 
-          <div className="border-l-2 border-primary h-12"></div>
+          <div className="hidden md:block border-l-2 border-primary h-12"></div>
 
-          <h2 className="text-3xl text-primary font-heading">Sign Up</h2>
+          <div>
+            <h2 className="text-3xl text-primary font-heading">
+              Sign Up
+            </h2>
+
+            <p className="text-sm text-textMuted mt-2 max-w-xs">
+              Create your Mentora account and personalize your academic workspace.
+            </p>
+          </div>
         </div>
 
-        <div className="bg-white shadow-xl p-10 rounded-2xl w-[400px]">
+        <div className="bg-white shadow-xl hover:shadow-2xl transition-all duration-300 p-6 md:p-10 rounded-3xl w-full max-w-[460px] border border-gray-100">
 
           <form onSubmit={handleSubmit}>
 
@@ -168,7 +180,7 @@ export default function Signup() {
               {[1, 2, 3, 4].map((n) => (
                 <div key={n} className="flex items-center gap-3">
                   <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-semibold ${step === n ? "bg-primary" : step > n ? "bg-accent text-black" : "bg-gray-300 text-gray-600"
+                    className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 shadow-sm ${step === n ? "bg-primary" : step > n ? "bg-accent text-black" : "bg-gray-300 text-gray-600"
                       }`}
                   >
                     {n}
@@ -181,17 +193,17 @@ export default function Signup() {
               <div>
                 <label className="block text-sm font-semibold text-textMain">Full name</label>
                 <input
-                  className="mt-1 w-full border-2 border-primary rounded-full px-4 py-2 outline-none"
+                  className="mt-1 w-full border-2 border-primary rounded-full px-4 py-2 outline-none focus:border-primary shadow-sm transition-all duration-200"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="Enter your name"
                 />
-                {errors.fullName && <p className="text-sm text-red-600 mt-1">{errors.fullName}</p>}
+                {errors.fullName && <p className="text-sm text-red-500 bg-red-50 border border-red-100 rounded-xl px-3 py-2 mt-2 animate-fadeIn">{errors.fullName}</p>}
 
                 <label className="block text-sm font-semibold text-textMain mt-4">Email</label>
                 <div className="relative mt-1 flex items-center">
                   <input
-                    className="w-full border-2 border-primary rounded-full px-4 py-2 outline-none pr-36"
+                    className="w-full border-2 border-primary rounded-full px-4 py-2 outline-none focus:border-primary shadow-sm transition-all duration-200 pr-36"
                     value={emailLocal}
                     onChange={(e) => setEmailLocal(e.target.value)}
                     placeholder="Enter your email"
@@ -208,7 +220,7 @@ export default function Signup() {
                     ))}
                   </select>
                 </div>
-                {errors.emailLocal && <p className="text-sm text-red-600 mt-1">{errors.emailLocal}</p>}
+                {errors.emailLocal && <p className="text-sm text-red-500 bg-red-50 border border-red-100 rounded-xl px-3 py-2 mt-2 animate-fadeIn">{errors.emailLocal}</p>}
 
                 <div className="flex flex-col items-center justify-between mt-6">
                   <button
@@ -221,7 +233,7 @@ export default function Signup() {
 
                   <p className="mt-6 text-sm text-textMuted">
                     Already have an account?{" "}
-                    <Link to="/login" className="text-primary font-semibold">
+                    <Link to="/login" className="text-primary font-semibold hover:opacity-80 transition-all duration-200">
                       Log in
                     </Link>
                   </p>
@@ -235,7 +247,7 @@ export default function Signup() {
                 <div className="relative mt-1">
                   <input
                     type={showPwd ? "text" : "password"}
-                    className="w-full border-2 border-primary rounded-full px-4 py-2 outline-none pr-12"
+                    className="w-full border-2 border-primary rounded-full px-4 py-2 outline-none focus:border-primary shadow-sm transition-all duration-200 pr-12"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter password"
@@ -249,38 +261,38 @@ export default function Signup() {
                     {showPwd ? <FiEyeOff size={20} /> : <FiEye size={20} />}
                   </button>
                 </div>
-                {errors.password && <p className="text-sm text-red-600 mt-1">{errors.password}</p>}
+                {errors.password && <p className="text-sm text-red-500 bg-red-50 border border-red-100 rounded-xl px-3 py-2 mt-2 animate-fadeIn">{errors.password}</p>}
 
                 <label className="block text-sm font-semibold text-textMain mt-4">Confirm Password</label>
                 <input
                   type={showPwd ? "text" : "password"}
-                  className="mt-1 w-full border-2 border-primary rounded-full px-4 py-2 outline-none"
+                  className="mt-1 w-full border-2 border-primary rounded-full px-4 py-2 outline-none focus:border-primary shadow-sm transition-all duration-200"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="Confirm password"
                 />
-                {errors.confirmPassword && <p className="text-sm text-red-600 mt-1">{errors.confirmPassword}</p>}
+                {errors.confirmPassword && <p className="text-sm text-red-500 bg-red-50 border border-red-100 rounded-xl px-3 py-2 mt-2 animate-fadeIn">{errors.confirmPassword}</p>}
 
                 <div className="flex flex-col items-center justify-between mt-6">
                   <div className="flex gap-42">
                     <button
                       type="button"
                       onClick={prevStep}
-                      className="px-5 py-1.5 rounded-full border-2 border-gray-300 hover:bg-gray-100 transition-all duration-200"
+                      className="px-5 py-2 rounded-full border-2 border-gray-300 hover:bg-gray-100 hover:scale-[1.02] transition-all duration-200"
                     >
                       Back
                     </button>
                     <button
                       type="button"
                       onClick={nextStep}
-                      className="bg-primary text-white px-5 py-1.5 border-2 border-primary rounded-full shadow hover:bg-white hover:text-primary border transition-all duration-200"
+                      className="bg-primary text-white px-5 py-2 border-2 border-primary rounded-full shadow-lg hover:bg-white hover:text-primary hover:scale-[1.02] transition-all duration-200"
                     >
                       Next
                     </button>
                   </div>
                   <p className="mt-6 text-sm text-textMuted">
                     Already have an account?{" "}
-                    <Link to="/login" className="text-primary font-semibold">
+                    <Link to="/login" className="text-primary font-semibold hover:opacity-80 transition-all duration-200">
                       Log in
                     </Link>
                   </p>
@@ -292,7 +304,7 @@ export default function Signup() {
               <div>
                 <label className="block text-sm font-semibold text-textMain">Batch</label>
                 <select
-                  className="mt-1 w-full border-2 border-primary rounded-full px-4 py-2 outline-none"
+                  className="mt-1 w-full border-2 border-primary rounded-full px-4 py-2 outline-none focus:border-primary shadow-sm transition-all duration-200"
                   value={batch}
                   onChange={(e) => setBatch(e.target.value)}
                 >
@@ -302,11 +314,11 @@ export default function Signup() {
                     </option>
                   ))}
                 </select>
-                {errors.batch && <p className="text-sm text-red-600 mt-1">{errors.batch}</p>}
+                {errors.batch && <p className="text-sm text-red-500 bg-red-50 border border-red-100 rounded-xl px-3 py-2 mt-2 animate-fadeIn">{errors.batch}</p>}
 
                 <label className="block text-sm font-semibold text-textMain mt-4">Year/Semester</label>
                 <select
-                  className="mt-1 w-full border-2 border-primary rounded-full px-4 py-2 outline-none"
+                  className="mt-1 w-full border-2 border-primary rounded-full px-4 py-2 outline-none focus:border-primary shadow-sm transition-all duration-200"
                   value={yearSem}
                   onChange={(e) => setYearSem(e.target.value)}
                 >
@@ -316,23 +328,23 @@ export default function Signup() {
                     </option>
                   ))}
                 </select>
-                {errors.yearSem && <p className="text-sm text-red-600 mt-1">{errors.yearSem}</p>}
+                {errors.yearSem && <p className="text-sm text-red-500 bg-red-50 border border-red-100 rounded-xl px-3 py-2 mt-2 animate-fadeIn">{errors.yearSem}</p>}
 
                 <label className="block text-sm font-semibold text-textMain mt-4">CGPA</label>
                 <input
-                  className="mt-1 w-full border-2 border-primary rounded-full px-4 py-2 outline-none"
+                  className="mt-1 w-full border-2 border-primary rounded-full px-4 py-2 outline-none focus:border-primary shadow-sm transition-all duration-200"
                   value={cgpa}
                   onChange={(e) => setCgpa(e.target.value)}
                   placeholder="e.g., 8.23"
                 />
-                {errors.cgpa && <p className="text-sm text-red-600 mt-1">{errors.cgpa}</p>}
+                {errors.cgpa && <p className="text-sm text-red-500 bg-red-50 border border-red-100 rounded-xl px-3 py-2 mt-2 animate-fadeIn">{errors.cgpa}</p>}
 
                 <div className="flex items-center justify-between mt-6">
                   <div className="flex gap-2">
                     <button
                       type="button"
                       onClick={prevStep}
-                      className="px-5 py-1.5 rounded-full border-2 border-gray-300 hover:bg-gray-100 transition-all duration-200"
+                      className="px-5 py-2 rounded-full border-2 border-gray-300 hover:bg-gray-100 hover:scale-[1.02] transition-all duration-200"
                     >
                       Back
                     </button>
@@ -341,7 +353,7 @@ export default function Signup() {
                   <button
                     type="button"
                     onClick={nextStep}
-                    className="bg-primary text-white px-5 py-1.5 border-2 border-primary rounded-full shadow hover:bg-white hover:text-primary border transition-all duration-200"
+                    className="bg-primary text-white px-5 py-2 border-2 border-primary rounded-full shadow-lg hover:bg-white hover:text-primary hover:scale-[1.02] transition-all duration-200"
                   >
                     Next
                   </button>
@@ -353,28 +365,28 @@ export default function Signup() {
               <div>
                 <label className="block text-sm font-semibold text-textMain">Roll Number</label>
                 <input
-                  className="mt-1 w-full border-2 border-primary rounded-full px-4 py-2 outline-none"
+                  className="mt-1 w-full border-2 border-primary rounded-full px-4 py-2 outline-none focus:border-primary shadow-sm transition-all duration-200"
                   value={rollNumber}
                   onChange={(e) => setRollNumber(e.target.value.toUpperCase())}
                   placeholder="e.g., 23BCA019"
                 />
-                {errors.rollNumber && <p className="text-sm text-red-600 mt-1">{errors.rollNumber}</p>}
+                {errors.rollNumber && <p className="text-sm text-red-500 bg-red-50 border border-red-100 rounded-xl px-3 py-2 mt-2 animate-fadeIn">{errors.rollNumber}</p>}
 
                 <label className="block text-sm font-semibold text-textMain mt-4">Specialization</label>
                 <select
-                  className="mt-1 w-full border-2 border-primary rounded-full px-4 py-2 outline-none"
+                  className="mt-1 w-full border-2 border-primary rounded-full px-4 py-2 outline-none focus:border-primary shadow-sm transition-all duration-200"
                   value={specialization}
                   onChange={(e) => setSpecialization(e.target.value)}
                 >
                   <option>Web Application Development</option>
                   <option>Mobile Application Development</option>
                 </select>
-                {errors.specialization && <p className="text-sm text-red-600 mt-1">{errors.specialization}</p>}
+                {errors.specialization && <p className="text-sm text-red-500 bg-red-50 border border-red-100 rounded-xl px-3 py-2 mt-2 animate-fadeIn">{errors.specialization}</p>}
 
                 <label className="block text-sm font-semibold text-textMain mt-4">Courses</label>
                 <div className="mt-1 flex gap-2 items-center">
                   <select
-                    className="w-2/3 border-2 border-primary rounded-full px-4 py-2 outline-none"
+                    className="w-2/3 border-2 border-primary rounded-full px-4 py-2 outline-none focus:border-primary shadow-sm transition-all duration-200"
                     onChange={(e) => toggleCourse(e.target.value)}
                     value=""
                   >
@@ -403,13 +415,13 @@ export default function Signup() {
                         </div>
                       ))}
                     </div>
-                    {errors.selectedCourses && <p className="text-sm text-red-600 mt-1">{errors.selectedCourses}</p>}
+                    {errors.selectedCourses && <p className="text-sm text-red-500 bg-red-50 border border-red-100 rounded-xl px-3 py-2 mt-2 animate-fadeIn">{errors.selectedCourses}</p>}
                   </div>
                 </div>
 
                 {
                   submitError && (
-                    <p className="text-sm text-red-600 mt-4">
+                    <p className="text-sm text-red-500 bg-red-50 border border-red-100 rounded-xl px-3 py-2 mt-4 animate-fadeIn">
                       {submitError}
                     </p>
                   )
@@ -419,7 +431,7 @@ export default function Signup() {
                     <button
                       type="button"
                       onClick={prevStep}
-                      className="px-5 py-1.5 rounded-full border-2 border-gray-300 hover:bg-gray-100 transition-all duration-200"
+                      className="px-5 py-2 rounded-full border-2 border-gray-300 hover:bg-gray-100 hover:scale-[1.02] transition-all duration-200"
                     >
                       Back
                     </button>
@@ -428,7 +440,7 @@ export default function Signup() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="bg-primary text-white px-5 py-1.5 border-2 border-primary rounded-full shadow hover:bg-white hover:text-primary border transition-all duration-200 disabled:opacity-60"
+                    className="bg-primary text-white px-5 py-2 border-2 border-primary rounded-full shadow-lg hover:bg-white hover:text-primary hover:scale-[1.02] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     {loading ? "Creating account..." : "Sign Up"}
                   </button>

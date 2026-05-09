@@ -57,21 +57,33 @@ export default function Login() {
 
       <Navbar />
 
-      <div className="flex flex-col items-center mt-12 flex-1">
+      <div className="flex flex-col items-center mt-10 md:mt-12 flex-1 px-4 animate-fadeIn">
 
-        <div className="flex items-center gap-6 mb-10">
+        <div className="flex flex-col md:flex-row items-center gap-5 md:gap-6 mb-10 text-center md:text-left">
           <div className="flex flex-col items-center">
-            <img src={logo} alt="logo" className="h-25" />
+            <img
+              src={logo}
+              alt="logo"
+              className="h-24 md:h-25 drop-shadow-lg hover:scale-[1.02] transition-all duration-300"
+            />
           </div>
 
-          <div className="border-l-2 border-primary h-12"></div>
+          <div className="hidden md:block border-l-2 border-primary h-12"></div>
 
-          <h2 className="text-3xl text-primary font-heading">Log In</h2>
+          <div>
+            <h2 className="text-3xl text-primary font-heading">
+              Log In
+            </h2>
+
+            <p className="text-sm text-textMuted mt-2 max-w-xs">
+              Continue your academic journey with Mentora.
+            </p>
+          </div>
         </div>
 
         <form
           onSubmit={handleSubmit}
-          className="bg-white shadow-xl p-10 rounded-2xl w-[400px]"
+          className="bg-white shadow-xl hover:shadow-2xl transition-all duration-300 p-6 md:p-10 rounded-3xl w-full max-w-[420px] border border-gray-100"
         >
 
           <InputField
@@ -89,13 +101,13 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <div className="text-right text-sm text-primary mt-2 cursor-pointer">
+          <div className="text-right text-sm text-primary mt-2 cursor-pointer font-medium hover:opacity-80 transition-all duration-200">
             Forgot Password?
           </div>
 
           {
             error && (
-              <p className="text-red-400 text-sm mt-3">
+              <p className="text-red-500 bg-red-50 border border-red-100 rounded-xl px-3 py-2 text-sm mt-4 animate-fadeIn">
                 {error}
               </p>
             )
@@ -104,13 +116,16 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="mt-6 w-full bg-primary text-white px-6 py-2 border-2 border-primary rounded-full shadow-lg font-semibold cursor-pointer hover:bg-white hover:text-primary hover:border-2 hover:border-primary transition-all duration-200 disabled:opacity-60"
+            className="mt-6 w-full bg-primary text-white px-6 py-3 border-2 border-primary rounded-full shadow-lg font-semibold cursor-pointer hover:bg-white hover:text-primary hover:border-primary hover:scale-[1.01] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? "Signing in..." : "Log In"}
           </button>
           <p className="mt-6 text-center text-sm text-textMuted">
             Don’t have an account?{" "}
-            <Link to="/signup" className="text-primary font-semibold cursor-pointer">
+            <Link
+              to="/signup"
+              className="text-primary font-semibold cursor-pointer hover:opacity-80 transition-all duration-200"
+            >
               Sign Up
             </Link>
           </p>
