@@ -62,7 +62,7 @@ export const getDateSheet = async (req, res) => {
 
 
     const exams = await DateSheet.find(filters)
-      .sort({ examDate: 1 });
+      .sort({ date: 1 });
 
     res.status(200).json(exams);
 
@@ -87,11 +87,11 @@ export const getUpcomingExams = async (req, res) => {
 
     const exams = await DateSheet.find({
       user: req.user._id,
-      examDate: {
+      date: {
         $gte: today,
       },
     })
-      .sort({ examDate: 1 })
+      .sort({ date: 1 })
       .limit(5);
 
     res.status(200).json(exams);
