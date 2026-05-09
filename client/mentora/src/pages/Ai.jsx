@@ -288,7 +288,7 @@ export default function AI() {
             )}
 
             <button
-              onClick={sendMessage}
+              onClick={() => sendMessage()}
               disabled={!input.trim() && !selectedImage}
               className={`px-5 py-3 rounded-full text-white transition ${input.trim() || selectedImage
                   ? "bg-gradient-to-r from-pink-500 to-purple-600 shadow-[0_0_20px_rgba(236,72,153,0.6)] hover:scale-105 hover:shadow-[0_0_30px_rgba(236,72,153,0.7)]"
