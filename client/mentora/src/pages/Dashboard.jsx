@@ -589,7 +589,7 @@ export default function Dashboard() {
                                 onChange={(e) =>
                                     setSelectedSubject(e.target.value)
                                 }
-                                className="text-sm text-primary border border-primary rounded-2xl px-2 py-1 outline-none"
+                                className="text-sm text-primary font-medium border border-primary rounded-2xl px-2 py-1 outline-none"
                             >
                                 {
                                     availableSubjects.map((subject) => (
@@ -605,12 +605,12 @@ export default function Dashboard() {
                         </div>
                         <div className="mt-4 flex items-start gap-5">
                             <Donut
-                              percent={attendance?.percentage || 0}
-                              color={
-                                (attendance?.percentage || 0) < 70
-                                  ? "#EF4444"
-                                  : "#00E5FF"
-                              }
+                                percent={attendance?.percentage || 0}
+                                color={
+                                    (attendance?.percentage || 0) < 70
+                                        ? "#EF4444"
+                                        : "#00E5FF"
+                                }
                             />
                             <div className="flex-1 pt-1">
                                 <div className="text-sm">
@@ -619,18 +619,18 @@ export default function Dashboard() {
                                 <div className="text-2xl font-semibold text-textMain mt-2">{attendance?.totalClasses || 0}</div>
                                 <div className="text-sm text-textMuted mt-1">Present: {attendance?.attendedClasses || 0}</div>
                                 <div className="text-sm text-red-400 mt-1">
-                                  Absent: {
-                                    (attendance?.totalClasses || 0)
-                                    -
-                                    (attendance?.attendedClasses || 0)
-                                  }
+                                    Absent: {
+                                        (attendance?.totalClasses || 0)
+                                        -
+                                        (attendance?.attendedClasses || 0)
+                                    }
                                 </div>
                                 {
-                                  (attendance?.percentage || 0) < 70 && (
-                                    <div className="mt-2 inline-flex items-center bg-red-50 border border-red-200 text-red-600 text-[11px] px-2.5 py-1 rounded-full font-medium whitespace-nowrap">
-                                      ⚠ Low Attendance
-                                    </div>
-                                  )
+                                    (attendance?.percentage || 0) < 70 && (
+                                        <div className="mt-2 inline-flex items-center bg-red-50 border border-red-200 text-red-600 text-[11px] px-2.5 py-1 rounded-full font-medium whitespace-nowrap">
+                                            ⚠ Low Attendance
+                                        </div>
+                                    )
                                 }
                                 <div className="flex gap-2 mt-3 flex-wrap">
 
@@ -664,16 +664,16 @@ export default function Dashboard() {
                     {/* My Performance */}
                     <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
                         <div className="w-full flex justify-between items-start">
-    <h3 className="font-semibold text-textMain">
-        My Performance
-    </h3>
+                            <h3 className="font-semibold text-textMain">
+                                My Performance
+                            </h3>
 
-    <div className="text-right">
-        <div className="text-sm text-primary">
-            SGPA: { user?.sgpa || 0}
-        </div>
-    </div>
-</div>
+                            <div className="text-right">
+                                <div className="text-sm text-primary border border-primary px-3 py-1 rounded-full font-medium">
+                                    SGPA: {user?.sgpa || 0}
+                                </div>
+                            </div>
+                        </div>
 
                         <div className="mt-4">
                             <ArcCGPA cgpa={user?.cgpa || 0} />
@@ -769,11 +769,10 @@ export default function Dashboard() {
                                         !showNoteInput
                                     )
                                 }
-                                className={`text-sm px-3 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium hover:scale-[1.03] ${
-                                    showNoteInput
+                                className={`text-sm px-3 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium hover:scale-[1.03] ${showNoteInput
                                         ? "text-red-500 border border-red-500 hover:bg-red-100"
                                         : "text-primary border border-primary hover:bg-blue-100"
-                                }`}
+                                    }`}
                             >
                                 {
                                     showNoteInput
@@ -875,7 +874,7 @@ export default function Dashboard() {
                     <div className="bg-white rounded-2xl shadow p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
                         <div className="flex justify-between items-start">
                             <h3 className="font-semibold text-textMain">Videos</h3>
-                            <button className="text-sm text-primary border border-primary hover:bg-blue-100 px-3 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium hover:scale-[1.03]">
+                            <button className="text-sm text-primary border border-primary px-3 py-1 rounded-full font-medium">
                                 Recommended
                             </button>
                         </div>
@@ -922,11 +921,10 @@ export default function Dashboard() {
                                         !showExamInput
                                     )
                                 }
-                                className={`text-sm px-3 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium hover:scale-[1.03] ${
-                                    showExamInput
+                                className={`text-sm px-3 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium hover:scale-[1.03] ${showExamInput
                                         ? "text-red-500 border border-red-500 hover:bg-red-100"
                                         : "text-primary border border-primary hover:bg-blue-100"
-                                }`}
+                                    }`}
                             >
                                 {
                                     showExamInput
