@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
+  const isPublicPage = ["/", "/login", "/signup"].includes(location.pathname);
 
   function handleLogout() {
     localStorage.removeItem("userInfo");
@@ -16,7 +17,7 @@ export default function Navbar() {
     <header className="w-full bg-primary text-white flex items-center justify-between px-6 md:px-10 py-4">
 
       <div className="flex items-center gap-2">
-        <Link to="/">
+        <Link to="/dashboard">
           <img
             src={logo}
             alt="Mentora Logo"
@@ -39,12 +40,14 @@ export default function Navbar() {
         <Link to="/features">Features</Link>
         <Link to="/about">About</Link>
 
-        <button
-          onClick={handleLogout}
-          className="border border-white/30 px-3 py-1 rounded-full hover:bg-red-500 hover:text-white transition"
-        >
-          Log Out
-        </button>
+        {!isPublicPage && (
+          <button
+            onClick={handleLogout}
+            className="border border-white/30 px-3 py-1 rounded-full hover:bg-red-500 hover:text-white transition"
+          >
+            Log Out
+          </button>
+        )}
 
       </nav>
 
