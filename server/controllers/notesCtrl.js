@@ -47,14 +47,7 @@ export const getNotes = async (req, res) => {
   try {
 
     const filters = {
-      $or: [
-        {
-          uploadedBy: req.user._id,
-        },
-        {
-          isPublic: true,
-        },
-      ],
+      uploadedBy: req.user._id,
     };
 
     // FILTER BY SEMESTER
