@@ -769,7 +769,7 @@ export default function Dashboard() {
                                         !showNoteInput
                                     )
                                 }
-                                className="text-sm text-primary"
+                                className="text-sm text-primary border border-primary hover:bg-blue-100 px-3 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium hover:scale-[1.03]"
                             >
                                 {
                                     showNoteInput
