@@ -5,9 +5,6 @@ export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const isPublicPage = ["/", "/login", "/signup"].includes(location.pathname);
-  const isLoggedIn =
-    !!localStorage.getItem("token") ||
-    !!localStorage.getItem("userInfo");
 
   function handleLogout() {
     localStorage.removeItem("userInfo");
@@ -20,7 +17,13 @@ export default function Navbar() {
     <header className="w-full bg-primary text-white flex items-center justify-between px-6 md:px-10 py-4">
 
       <div className="flex items-center gap-2">
-        {isLoggedIn ? (
+        {isPublicPage ? (
+          <img
+            src={logo}
+            alt="Mentora Logo"
+            className="h-10 opacity-90 cursor-default"
+          />
+        ) : (
           <Link to="/dashboard">
             <img
               src={logo}
@@ -28,12 +31,6 @@ export default function Navbar() {
               className="h-10 cursor-pointer hover:opacity-50 transition"
             />
           </Link>
-        ) : (
-          <img
-            src={logo}
-            alt="Mentora Logo"
-            className="h-10 opacity-90 cursor-default"
-          />
         )}
       </div>
 
