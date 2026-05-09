@@ -166,7 +166,7 @@ export default function AI() {
 
         {/* Header */}
         <div className="mb-6 flex items-center justify-between">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
+          <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent leading-snug">
             Academic Resource & Intelligence Assistant
           </h1>
 
@@ -185,10 +185,10 @@ export default function AI() {
         </div>
 
         {/* Chat Container */}
-        <div className="flex-1 rounded-2xl p-6 flex flex-col backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_0_40px_rgba(168,85,247,0.2)]">
+        <div className="flex-1 rounded-2xl p-4 md:p-6 flex flex-col min-h-[75vh] backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_0_40px_rgba(168,85,247,0.2)] animate-fadeIn">
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto space-y-4 pr-2">
+          <div className="flex-1 overflow-y-auto scroll-smooth space-y-4 pr-2">
             {messages.map((msg, index) => (
               <div
                 key={index}
@@ -196,7 +196,7 @@ export default function AI() {
                   }`}
               >
                 <div
-                  className={`max-w-[75%] px-5 py-4 text-sm backdrop-blur-md leading-7 ${msg.role === "user"
+                  className={`max-w-[90%] md:max-w-[75%] px-5 py-4 text-sm backdrop-blur-md leading-7 ${msg.role === "user"
                       ? "bg-gradient-to-r from-blue-800 to-purple-900 text-white shadow-lg rounded-3xl"
                       : "bg-white/10 text-gray-200 border border-white/10 rounded-3xl"
                     }`}
@@ -255,7 +255,7 @@ export default function AI() {
               <button
                 key={prompt}
                 onClick={() => sendMessage(prompt)}
-                className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300 hover:border-purple-500 hover:text-white transition"
+                className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300 hover:border-purple-500 hover:text-white hover:bg-purple-500/10 hover:scale-[1.02] transition-all duration-200"
               >
                 {prompt}
               </button>
@@ -263,7 +263,7 @@ export default function AI() {
           </div>
           {/* Input */}
           <div className="mt-4 flex gap-2 items-center">
-            <label className="cursor-pointer flex items-center justify-center w-12 h-12 rounded-full bg-white/10 border border-white/10 hover:border-purple-500 transition">
+            <label className="cursor-pointer flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/10 hover:border-purple-500 hover:bg-purple-500/10 transition-all duration-200">
               <ImagePlus size={20} className="text-gray-300" />
 
               <input
@@ -277,12 +277,12 @@ export default function AI() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask ARIA anything..."
-              className="flex-1 bg-white/10 border border-white/10 rounded-full px-4 py-3 outline-none text-white placeholder-gray-400 backdrop-blur-md focus:border-purple-500"
+              className="flex-1 bg-white/10 border border-white/10 rounded-full px-4 py-3 outline-none text-white placeholder-gray-400 backdrop-blur-md focus:border-purple-500 focus:shadow-[0_0_20px_rgba(168,85,247,0.2)] transition-all duration-200"
               onKeyDown={(e) => e.key === "Enter" && sendMessage()}
             />
 
             {selectedImage && (
-              <div className="px-4 py-2 rounded-2xl bg-white/10 border border-white/10 text-xs text-gray-300 max-w-[220px] truncate">
+              <div className="px-4 py-2 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 text-xs text-gray-300 max-w-[220px] truncate shadow-sm">
                 📎 {selectedImage.name}
               </div>
             )}
@@ -291,7 +291,7 @@ export default function AI() {
               onClick={sendMessage}
               disabled={!input.trim() && !selectedImage}
               className={`px-5 py-3 rounded-full text-white transition ${input.trim() || selectedImage
-                  ? "bg-gradient-to-r from-pink-500 to-purple-600 shadow-[0_0_20px_rgba(236,72,153,0.6)] hover:scale-105"
+                  ? "bg-gradient-to-r from-pink-500 to-purple-600 shadow-[0_0_20px_rgba(236,72,153,0.6)] hover:scale-105 hover:shadow-[0_0_30px_rgba(236,72,153,0.7)]"
                   : "bg-gray-700 cursor-not-allowed opacity-50"
                 }`}
             >

@@ -104,18 +104,24 @@ async function handleSaveProfile() {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <main className="max-w-screen-xl mx-auto p-8">
-        <h1 className="text-2xl font-semibold text-textMain">
-          Your Profile
-        </h1>
+      <main className="max-w-screen-xl mx-auto px-4 md:px-8 py-8 animate-fadeIn">
+        <div className="animate-fadeIn">
+          <h1 className="text-2xl md:text-3xl font-semibold text-textMain">
+            Your Profile
+          </h1>
 
-        <div className="mt-6 bg-white rounded-2xl shadow p-6">
+          <p className="text-sm text-textMuted mt-2 max-w-2xl">
+            Manage your personal details, academic preferences, and account settings.
+          </p>
+        </div>
+
+        <div className="mt-6 bg-white rounded-3xl shadow hover:shadow-xl transition-all duration-300 p-6 md:p-8 border border-gray-100 animate-fadeIn">
 
           {/* Form Grid */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
             {/* Personal Info */}
-            <h3 className="col-span-2 text-sm font-medium text-textMuted">
+            <h3 className="col-span-1 md:col-span-2 text-sm font-semibold text-textMuted uppercase tracking-wide">
               Personal Information
             </h3>
 
@@ -124,7 +130,7 @@ async function handleSaveProfile() {
               value={form.name}
               onChange={handleChange}
               placeholder="Full Name"
-              className="border rounded-full px-4 py-2"
+              className="border border-gray-200 rounded-full px-4 py-3 shadow-sm focus:border-primary outline-none transition-all duration-200"
             />
 
             <input
@@ -132,11 +138,11 @@ async function handleSaveProfile() {
               value={form.email}
               onChange={handleChange}
               placeholder="Email"
-              className="border rounded-full px-4 py-2"
+              className="border border-gray-200 rounded-full px-4 py-3 shadow-sm focus:border-primary outline-none transition-all duration-200"
             />
 
             {/* Security */}
-            <h3 className="col-span-2 text-sm font-medium text-textMuted mt-2">
+            <h3 className="col-span-1 md:col-span-2 text-sm font-semibold text-textMuted uppercase tracking-wide mt-4">
               Security
             </h3>
 
@@ -146,7 +152,7 @@ async function handleSaveProfile() {
               onChange={handleChange}
               placeholder="Password"
               type="password"
-              className="border rounded-full px-4 py-2"
+              className="border border-gray-200 rounded-full px-4 py-3 shadow-sm focus:border-primary outline-none transition-all duration-200"
             />
 
             <input
@@ -155,11 +161,11 @@ async function handleSaveProfile() {
               onChange={handleChange}
               placeholder="Confirm Password"
               type="password"
-              className="border rounded-full px-4 py-2"
+              className="border border-gray-200 rounded-full px-4 py-3 shadow-sm focus:border-primary outline-none transition-all duration-200"
             />
 
             {/* Academic */}
-            <h3 className="col-span-2 text-sm font-medium text-textMuted mt-2">
+            <h3 className="col-span-1 md:col-span-2 text-sm font-semibold text-textMuted uppercase tracking-wide mt-4">
               Academic Details
             </h3>
 
@@ -167,7 +173,7 @@ async function handleSaveProfile() {
               name="batch"
               value={form.batch}
               onChange={handleChange}
-              className="border rounded-full px-4 py-2"
+              className="border border-gray-200 rounded-full px-4 py-3 shadow-sm focus:border-primary outline-none transition-all duration-200"
             >
               <option>2022-25</option>
               <option>2023-26</option>
@@ -179,7 +185,7 @@ async function handleSaveProfile() {
               name="year"
               value={form.year}
               onChange={handleChange}
-              className="border rounded-full px-4 py-2"
+              className="border border-gray-200 rounded-full px-4 py-3 shadow-sm focus:border-primary outline-none transition-all duration-200"
             >
               <option>1st Year - 1st sem</option>
               <option>1st Year - 2nd sem</option>
@@ -194,14 +200,14 @@ async function handleSaveProfile() {
               value={form.cgpa}
               onChange={handleChange}
               placeholder="CGPA"
-              className="border rounded-full px-4 py-2"
+              className="border border-gray-200 rounded-full px-4 py-3 shadow-sm focus:border-primary outline-none transition-all duration-200"
             />
             <input
               name="sgpa"
               value={form.sgpa}
               onChange={handleChange}
               placeholder="Current Semester SGPA"
-              className="border rounded-full px-4 py-2"
+              className="border border-gray-200 rounded-full px-4 py-3 shadow-sm focus:border-primary outline-none transition-all duration-200"
             />
 
             <input
@@ -209,11 +215,11 @@ async function handleSaveProfile() {
               value={form.roll}
               onChange={handleChange}
               placeholder="Roll Number"
-              className="border rounded-full px-4 py-2"
+              className="border border-gray-200 rounded-full px-4 py-3 shadow-sm focus:border-primary outline-none transition-all duration-200"
             />
 
             {/* Preferences */}
-            <h3 className="col-span-2 text-sm font-medium text-textMuted mt-2">
+            <h3 className="col-span-1 md:col-span-2 text-sm font-semibold text-textMuted uppercase tracking-wide mt-4">
               Preferences
             </h3>
 
@@ -221,7 +227,7 @@ async function handleSaveProfile() {
               name="specialization"
               value={form.specialization}
               onChange={handleChange}
-              className="border rounded-full px-4 py-2 col-span-2"
+              className="border border-gray-200 rounded-full px-4 py-3 col-span-1 md:col-span-2 shadow-sm focus:border-primary outline-none transition-all duration-200"
             >
               <option>Web Application Development</option>
               <option>Mobile Application Development</option>
@@ -229,7 +235,7 @@ async function handleSaveProfile() {
 
             <select
               multiple
-              className="border rounded-2xl px-4 py-2 col-span-2 h-28"
+              className="border border-gray-200 rounded-2xl px-4 py-3 col-span-1 md:col-span-2 h-32 shadow-sm focus:border-primary outline-none transition-all duration-200"
             >
               <option>Software Engineering</option>
               <option>Entrepreneurship</option>
@@ -240,20 +246,20 @@ async function handleSaveProfile() {
           </div>
 
           {/* Actions */}
-          <div className="mt-6 flex justify-between items-center">
+          <div className="mt-8 flex flex-col md:flex-row justify-between items-center gap-4">
 
-            <button className="text-red-500 font-medium">
+            <button className="text-red-500 bg-red-50 hover:bg-red-100 px-4 py-2 rounded-full font-medium transition-all duration-200 hover:scale-[1.02]">
               Logout
             </button>
 
             <div className="flex gap-3">
-              <button className="border border-gray-300 px-4 py-2 rounded-full">
+              <button className="border border-gray-300 px-5 py-2.5 rounded-full hover:bg-gray-100 hover:scale-[1.02] transition-all duration-200">
                 Cancel
               </button>
 
               <button
                 onClick={handleSaveProfile}
-                className="bg-primary text-white px-4 py-2 rounded-full"
+                className="bg-primary text-white px-5 py-2.5 rounded-full shadow-lg hover:bg-blue-600 hover:scale-[1.02] transition-all duration-200"
               >
                 Save Changes
               </button>

@@ -20,18 +20,26 @@ export default function Career() {
         <div className="min-h-screen bg-background">
             <Navbar />
 
-            <main className="max-w-screen-xl mx-auto p-8">
+            <main className="max-w-screen-xl mx-auto px-4 md:px-8 py-8 animate-fadeIn">
 
                 {/* Header */}
 
-                <h1 className="text-2xl font-semibold text-textMain">Career Support</h1>
+                <div className="animate-fadeIn">
+                    <h1 className="text-2xl md:text-3xl font-semibold text-textMain">
+                        Career Support
+                    </h1>
+
+                    <p className="text-sm text-textMuted mt-2 max-w-2xl">
+                        Build stronger resumes, explore career roadmaps, and get AI-powered placement guidance.
+                    </p>
+                </div>
 
                 {/* Tabs */}
 
-                <div className="flex flex-col gap-4 mt-6">
+                <div className="flex flex-col gap-6 mt-6 animate-fadeIn">
                     <button
                         onClick={() => setActiveTab("resume")}
-                        className={`px-4 py-2 rounded-full border ${activeTab === "resume"
+                        className={`px-5 py-2.5 rounded-full border transition-all duration-200 font-medium hover:scale-[1.02] ${activeTab === "resume"
                             ? "bg-primary text-white border-primary"
                             : "border-gray-300 text-textMuted"
                             }`}
@@ -41,7 +49,7 @@ export default function Career() {
 
                     <button
                         onClick={() => setActiveTab("ai")}
-                        className={`px-4 py-2 rounded-full border ${activeTab === "ai"
+                        className={`px-5 py-2.5 rounded-full border transition-all duration-200 font-medium hover:scale-[1.02] ${activeTab === "ai"
                             ? "bg-primary text-white border-primary"
                             : "border-gray-300 text-textMuted"
                             }`}
@@ -156,9 +164,9 @@ ${resumeData.experience}
     }
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 animate-fadeIn">
             {/* Tips */}
-            <div className="bg-white rounded-2xl shadow p-6">
+            <div className="bg-white rounded-3xl shadow hover:shadow-xl transition-all duration-300 p-6 border border-gray-100">
                 <h3 className="font-semibold text-textMain">Tips & Tricks</h3>
 
                 <ul className="mt-4 space-y-2 text-sm text-textMuted">
@@ -183,7 +191,7 @@ ${resumeData.experience}
             </div>
 
             {/* Form */}
-            <div className="bg-white rounded-2xl shadow p-6">
+            <div className="bg-white rounded-3xl shadow hover:shadow-xl transition-all duration-300 p-6 border border-gray-100">
                 <h3 className="font-semibold text-textMain">Build Your Resume</h3>
                 {userData && (
                   <p className="text-sm text-textMuted mt-1">
@@ -202,7 +210,7 @@ ${resumeData.experience}
                                 name: e.target.value,
                             })
                         }
-                        className="w-full border rounded px-3 py-2"
+                        className="w-full border border-gray-200 rounded-2xl px-4 py-3 shadow-sm focus:border-primary outline-none transition-all duration-200"
                     />
 
                     <input
@@ -214,7 +222,7 @@ ${resumeData.experience}
                                 skills: e.target.value,
                             })
                         }
-                        className="w-full border rounded px-3 py-2"
+                        className="w-full border border-gray-200 rounded-2xl px-4 py-3 shadow-sm focus:border-primary outline-none transition-all duration-200"
                     />
 
                     <textarea
@@ -226,7 +234,7 @@ ${resumeData.experience}
                                 projects: e.target.value,
                             })
                         }
-                        className="w-full border rounded px-3 py-2 min-h-[100px]"
+                        className="w-full border border-gray-200 rounded-2xl px-4 py-3 min-h-[120px] shadow-sm focus:border-primary outline-none transition-all duration-200"
                     />
 
                     <textarea
@@ -238,7 +246,7 @@ ${resumeData.experience}
                                 experience: e.target.value,
                             })
                         }
-                        className="w-full border rounded px-3 py-2 min-h-[100px]"
+                        className="w-full border border-gray-200 rounded-2xl px-4 py-3 min-h-[120px] shadow-sm focus:border-primary outline-none transition-all duration-200"
                     />
 
                 </div>
@@ -250,14 +258,14 @@ ${resumeData.experience}
                     <button
                         onClick={handleGenerateResume}
                         disabled={isImproving}
-                        className="bg-primary text-white px-4 py-2 rounded-full disabled:opacity-50"
+                        className="bg-primary text-white px-5 py-2.5 rounded-full shadow-lg hover:bg-blue-600 hover:scale-[1.02] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         {isImproving ? "Generating..." : "Generate"}
                     </button>
 
                     <button
                         onClick={handleDownloadResume}
-                        className="border border-gray-300 px-4 py-2 rounded-full hover:bg-gray-100 transition"
+                        className="border border-gray-300 px-5 py-2.5 rounded-full hover:bg-gray-100 hover:scale-[1.02] transition-all duration-200"
                     >
                         Download Resume
                     </button>
@@ -350,7 +358,7 @@ function AISection({ userData }) {
 
 
     return (
-        <div className="bg-white rounded-2xl shadow p-6 h-[600px] flex flex-col">
+        <div className="bg-white rounded-3xl shadow hover:shadow-xl transition-all duration-300 p-6 h-[600px] flex flex-col border border-gray-100 animate-fadeIn">
 
             <h3 className="font-semibold text-textMain">
                 Career Assistant
@@ -368,7 +376,7 @@ function AISection({ userData }) {
                     <button
                         key={prompt}
                         onClick={() => sendMessage(prompt)}
-                        className="text-xs px-3 py-2 rounded-full border border-gray-300 hover:border-primary hover:text-primary transition"
+                        className="text-xs px-4 py-2 rounded-full border border-gray-300 hover:border-primary hover:text-primary hover:bg-blue-50 transition-all duration-200 hover:scale-[1.02]"
                     >
                         {prompt}
                     </button>
@@ -390,8 +398,8 @@ function AISection({ userData }) {
                         <div
                             className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm ${
                                 msg.role === "user"
-                                    ? "bg-primary text-white"
-                                    : "bg-gray-100 text-textMain"
+                                    ? "bg-primary text-white shadow-md"
+                                    : "bg-gray-100 text-textMain shadow-sm"
                             }`}
                         >
                             {msg.role === "assistant" ? (
@@ -431,13 +439,13 @@ function AISection({ userData }) {
                         }
                     }}
                     placeholder="Ask something..."
-                    className="flex-1 border rounded-full px-4 py-2"
+                    className="flex-1 border border-gray-200 rounded-full px-4 py-3 shadow-sm focus:border-primary outline-none transition-all duration-200"
                 />
 
                 <button
                     onClick={() => sendMessage()}
                     disabled={!input.trim()}
-                    className="bg-primary text-white px-4 py-2 rounded-full disabled:opacity-50"
+                    className="bg-primary text-white px-5 py-2.5 rounded-full shadow-lg hover:bg-blue-600 hover:scale-[1.02] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     Send
                 </button>
