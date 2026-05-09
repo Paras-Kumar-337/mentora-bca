@@ -769,7 +769,11 @@ export default function Dashboard() {
                                         !showNoteInput
                                     )
                                 }
-                                className="text-sm text-primary border border-primary hover:bg-blue-100 px-3 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium hover:scale-[1.03]"
+                                className={`text-sm px-3 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium hover:scale-[1.03] ${
+                                    showNoteInput
+                                        ? "text-red-500 border border-red-500 hover:bg-red-100"
+                                        : "text-primary border border-primary hover:bg-blue-100"
+                                }`}
                             >
                                 {
                                     showNoteInput
@@ -871,7 +875,9 @@ export default function Dashboard() {
                     <div className="bg-white rounded-2xl shadow p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
                         <div className="flex justify-between items-start">
                             <h3 className="font-semibold text-textMain">Videos</h3>
-                            <button className="text-sm text-primary">Recommended</button>
+                            <button className="text-sm text-primary border border-primary hover:bg-blue-100 px-3 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium hover:scale-[1.03]">
+                                Recommended
+                            </button>
                         </div>
 
                         <div className="mt-4 space-y-4">
@@ -916,7 +922,11 @@ export default function Dashboard() {
                                         !showExamInput
                                     )
                                 }
-                                className="text-sm text-primary"
+                                className={`text-sm px-3 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium hover:scale-[1.03] ${
+                                    showExamInput
+                                        ? "text-red-500 border border-red-500 hover:bg-red-100"
+                                        : "text-primary border border-primary hover:bg-blue-100"
+                                }`}
                             >
                                 {
                                     showExamInput
