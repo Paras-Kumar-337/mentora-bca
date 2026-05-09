@@ -18,7 +18,7 @@ const router = express.Router();
 router
   .route("/")
   .post(protect, createExam)
-  .get(getDateSheet);
+  .get(protect, getDateSheet);
 
 
 // ======================================
@@ -27,6 +27,7 @@ router
 
 router.get(
   "/upcoming",
+  protect,
   getUpcomingExams
 );
 
