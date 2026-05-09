@@ -24,6 +24,7 @@ export const createExam = async (req, res) => {
       date,
       time,
       room,
+      user: req.user._id,
     });
 
     res.status(201).json(exam);
@@ -45,7 +46,9 @@ export const createExam = async (req, res) => {
 export const getDateSheet = async (req, res) => {
   try {
 
-    const filters = {};
+    const filters = {
+      user: req.user._id,
+    };
 
     // FILTER BY SEMESTER
     if (req.query.semester) {
@@ -83,6 +86,7 @@ export const getUpcomingExams = async (req, res) => {
     const today = new Date();
 
     const exams = await DateSheet.find({
+      user: req.user._id,
       examDate: {
         $gte: today,
       },

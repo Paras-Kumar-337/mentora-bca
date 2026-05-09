@@ -46,7 +46,16 @@ export const createNote = async (req, res) => {
 export const getNotes = async (req, res) => {
   try {
 
-    const filters = {};
+    const filters = {
+      $or: [
+        {
+          uploadedBy: req.user._id,
+        },
+        {
+          isPublic: true,
+        },
+      ],
+    };
 
     // FILTER BY SEMESTER
     if (req.query.semester) {
