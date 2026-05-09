@@ -144,6 +144,21 @@ export default function Dashboard() {
     const [datesheet, setDatesheet] =
         useState([]);
 
+    const [loading, setLoading] =
+        useState(true);
+
+    const [taskLoading, setTaskLoading] =
+        useState(false);
+
+    const [noteLoading, setNoteLoading] =
+        useState(false);
+
+    const [examLoading, setExamLoading] =
+        useState(false);
+
+    const [attendanceLoading, setAttendanceLoading] =
+        useState(false);
+
     const [showExamInput, setShowExamInput] =
         useState(false);
 
@@ -175,6 +190,7 @@ export default function Dashboard() {
         useState("");
 
     useEffect(() => {
+        setLoading(true);
 
         const fetchTasks = async () => {
 
@@ -251,6 +267,9 @@ export default function Dashboard() {
             };
 
         fetchDatesheet();
+        setTimeout(() => {
+            setLoading(false);
+        }, 700);
 
     }, []);
 
@@ -349,7 +368,7 @@ export default function Dashboard() {
         if (!newTask.trim()) return;
 
         try {
-
+            setTaskLoading(true);
             const createdTask =
                 await createTask({
                     title: newTask,
@@ -363,9 +382,9 @@ export default function Dashboard() {
             setNewTask("");
 
             setShowTaskInput(false);
-
+            setTaskLoading(false);
         } catch (error) {
-
+            setTaskLoading(false);
             console.log(error);
         }
     }
@@ -392,9 +411,8 @@ export default function Dashboard() {
     async function handleMarkAttendance(
         status
     ) {
-
         try {
-
+            setAttendanceLoading(true);
             const updatedAttendance =
                 await markAttendance({
                     subject: selectedSubject,
@@ -409,9 +427,9 @@ export default function Dashboard() {
                         : item
                 )
             );
-
+            setAttendanceLoading(false);
         } catch (error) {
-
+            setAttendanceLoading(false);
             console.log(error);
         }
     }
@@ -426,7 +444,7 @@ export default function Dashboard() {
         ) return;
 
         try {
-
+            setExamLoading(true);
             const createdExam =
                 await createDatesheet({
                     subject: examSubject,
@@ -449,8 +467,9 @@ export default function Dashboard() {
             setExamRoom("");
 
             setShowExamInput(false);
-
+            setExamLoading(false);
         } catch (error) {
+            setExamLoading(false);
             console.log(error);
         }
     }
@@ -462,6 +481,7 @@ export default function Dashboard() {
         ) return;
 
         try {
+            setNoteLoading(true);
             const createdNote =
                 await createNote({
                     title: newNoteTitle,
@@ -479,19 +499,44 @@ export default function Dashboard() {
             setNewNoteSubject("");
             setNewNoteContent("");
             setShowNoteInput(false);
+            setNoteLoading(false);
         } catch (error) {
+            setNoteLoading(false);
             console.log(error);
         }
+    }
+
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-background p-8">
+                <div className="animate-pulse space-y-6 max-w-screen-xl mx-auto">
+
+                    <div className="h-12 bg-gray-200 rounded-2xl w-1/3" />
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div className="h-64 bg-gray-200 rounded-2xl" />
+                        <div className="h-64 bg-gray-200 rounded-2xl" />
+                        <div className="h-64 bg-gray-200 rounded-2xl" />
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div className="h-64 bg-gray-200 rounded-2xl" />
+                        <div className="h-64 bg-gray-200 rounded-2xl" />
+                        <div className="h-64 bg-gray-200 rounded-2xl" />
+                    </div>
+                </div>
+            </div>
+        );
     }
 
     return (
         <div className="min-h-screen bg-background">
             <Navbar />
 
-            <main className="max-w-screen-xl mx-auto p-8">
+            <main className="max-w-screen-xl mx-auto px-4 md:px-8 py-8 animate-fadeIn">
 
                 {/* Dashboard header */}
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
                         <h1 className="text-2xl font-heading text-textMain font-semibold">
                             Welcome back, {user?.name || "Student"}!
@@ -500,20 +545,20 @@ export default function Dashboard() {
                     </div>
 
                     {/* search + notifications */}
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 w-full md:w-auto">
                         <div className="relative">
                             <input
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
                                 placeholder="Search classes, notes, videos..."
-                                className="border-2 border-gray-200 rounded-full px-4 py-2 w-80 outline-none pr-10"
+                                className="border-2 border-gray-200 rounded-full px-4 py-2 w-full md:w-80 outline-none pr-10 focus:border-primary shadow-sm"
                             />
                             <FiSearch className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
                         </div>
                     </div>
                 </div>
 
-                <div className="flex gap-3 mt-6 w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-6 w-full animate-fadeIn">
                     <Link to="/career" className="flex-1 text-center bg-transparent text-primary border-2 border-primary px-4 py-2 rounded-full text-sm hover:bg-primary hover:text-white transition">Career Support</Link>
                     <Link to="/community" className="flex-1 text-center bg-transparent text-primary border-2 border-primary px-4 py-2 rounded-full text-sm hover:bg-primary hover:text-white transition">Community Section</Link>
                     <Link to="/profile" className="flex-1 text-center bg-transparent text-primary border-2 border-primary px-4 py-2 rounded-full text-sm hover:bg-primary hover:text-white transition">Your Profile</Link>
@@ -534,9 +579,9 @@ export default function Dashboard() {
                 </div>
 
                 {/* Row 1 */}
-                <div className="grid grid-cols-3 gap-6 mt-6">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6 animate-fadeIn">
                     {/* Attendance */}
-                    <div className="bg-white rounded-2xl shadow p-6 h-full">
+                    <div className="bg-white rounded-2xl shadow p-6 h-full hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
                         <div className="w-full flex justify-between items-start">
                             <h3 className="font-semibold text-textMain">Attendance</h3>
                             <select
@@ -595,9 +640,9 @@ export default function Dashboard() {
                                                 "present"
                                             )
                                         }
-                                        className="bg-primary text-white px-4 py-2 border-2 border-primary rounded-full hover:bg-transparent hover:text-primary transition"
+                                        className="bg-primary text-white px-4 py-2 border-2 border-primary rounded-full hover:bg-transparent hover:text-primary hover:scale-[1.02] transition-all duration-200"
                                     >
-                                        Present
+                                        {attendanceLoading ? "Updating..." : "Present"}
                                     </button>
 
                                     <button
@@ -606,9 +651,9 @@ export default function Dashboard() {
                                                 "absent"
                                             )
                                         }
-                                        className="bg-red-500 text-white px-4 py-2 border-2 border-red-500 rounded-full hover:bg-transparent hover:text-red-500 transition"
+                                        className="bg-red-500 text-white px-4 py-2 border-2 border-red-500 rounded-full hover:bg-transparent hover:text-red-500 hover:scale-[1.02] transition-all duration-200"
                                     >
-                                        Absent
+                                        {attendanceLoading ? "Updating..." : "Absent"}
                                     </button>
 
                                 </div>
@@ -617,7 +662,7 @@ export default function Dashboard() {
                     </div>
 
                     {/* My Performance */}
-                    <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center">
+                    <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
                         <div className="w-full flex justify-between items-start">
     <h3 className="font-semibold text-textMain">
         My Performance
@@ -636,7 +681,7 @@ export default function Dashboard() {
                     </div>
 
                     {/* Tasks */}
-                    <div className="bg-white rounded-2xl shadow p-6">
+                    <div className="bg-white rounded-2xl shadow p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
                         <div className="flex justify-between items-start">
                             <h3 className="font-semibold text-textMain">My Tasks</h3>
                             <button
@@ -687,7 +732,7 @@ export default function Dashboard() {
                                             onClick={handleAddTask}
                                             className="bg-primary text-white px-4 py-2 rounded-full"
                                         >
-                                            Add
+                                            {taskLoading ? "Adding..." : "Add"}
                                         </button>
 
                                     </div>
@@ -700,7 +745,7 @@ export default function Dashboard() {
                                         !showTaskInput
                                     )
                                 }
-                                className="mt-2 bg-primary text-white px-4 py-2 border-2 border-primary rounded-full hover:bg-transparent hover:text-primary transition"
+                                className="mt-2 bg-primary text-white px-4 py-2 border-2 border-primary rounded-full hover:bg-transparent hover:text-primary hover:scale-[1.02] transition-all duration-200"
                             >
                                 {showTaskInput
                                     ? "Cancel"
@@ -712,10 +757,10 @@ export default function Dashboard() {
                 </div>
 
                 {/* Row 2 */}
-                <div className="grid grid-cols-3 gap-6 mt-6 w-full">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6 animate-fadeIn w-full">
 
                     {/* Notes */}
-                    <div className="bg-white rounded-2xl shadow p-6">
+                    <div className="bg-white rounded-2xl shadow p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
                         <div className="flex justify-between items-start">
                             <h3 className="font-semibold text-textMain">Notes</h3>
                             <button
@@ -791,9 +836,9 @@ export default function Dashboard() {
                                     />
 
                                     <button
-                                        onClick={handleAddNote} className="mt-2 bg-primary text-white px-4 py-2 border-2 border-primary rounded-full hover:bg-transparent hover:text-primary transition"
+                                        onClick={handleAddNote} className="mt-2 bg-primary text-white px-4 py-2 border-2 border-primary rounded-full hover:bg-transparent hover:text-primary hover:scale-[1.02] transition-all duration-200"
                                     >
-                                        Save Note
+                                        {noteLoading ? "Saving..." : "Save Note"}
                                     </button>
 
                                 </div>
@@ -823,7 +868,7 @@ export default function Dashboard() {
                     </div>
 
                     {/* Videos */}
-                    <div className="bg-white rounded-2xl shadow p-6">
+                    <div className="bg-white rounded-2xl shadow p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
                         <div className="flex justify-between items-start">
                             <h3 className="font-semibold text-textMain">Videos</h3>
                             <button className="text-sm text-primary">Recommended</button>
@@ -862,7 +907,7 @@ export default function Dashboard() {
                     </div>
 
                     {/* Datesheet Widget */}
-                    <div className="bg-white rounded-2xl shadow p-6">
+                    <div className="bg-white rounded-2xl shadow p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
                         <div className="flex justify-between items-start">
                             <h3 className="font-semibold text-textMain">Datesheet</h3>
                             <button
@@ -973,9 +1018,9 @@ export default function Dashboard() {
 
                                     <button
                                         onClick={handleAddExam}
-                                        className="mt-2 bg-primary text-white px-4 py-2 border-2 border-primary rounded-full hover:bg-transparent hover:text-primary transition"
+                                        className="mt-2 bg-primary text-white px-4 py-2 border-2 border-primary rounded-full hover:bg-transparent hover:text-primary hover:scale-[1.02] transition-all duration-200"
                                     >
-                                        Save Exam
+                                        {examLoading ? "Saving..." : "Save Exam"}
                                     </button>
 
                                 </div>
