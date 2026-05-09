@@ -46,9 +46,11 @@ export const createExam = async (req, res) => {
 export const getDateSheet = async (req, res) => {
   try {
 
-    const filters = {
-      user: req.user._id,
-    };
+    const filters = {};
+
+    if (req.query.user) {
+      filters.user = req.query.user._id;
+    }
 
     // FILTER BY SEMESTER
     if (req.query.semester) {
