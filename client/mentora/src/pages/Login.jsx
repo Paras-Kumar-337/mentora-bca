@@ -74,10 +74,6 @@ export default function Login() {
             <h2 className="text-3xl text-primary font-heading">
               Log In
             </h2>
-
-            <p className="text-sm text-textMuted mt-2 max-w-xs">
-              Continue your academic journey with Mentora.
-            </p>
           </div>
         </div>
 

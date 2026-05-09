@@ -164,10 +164,6 @@ export default function Signup() {
             <h2 className="text-3xl text-primary font-heading">
               Sign Up
             </h2>
-
-            <p className="text-sm text-textMuted mt-2 max-w-xs">
-              Create your Mentora account and personalize your academic workspace.
-            </p>
           </div>
         </div>
 
