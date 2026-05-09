@@ -321,11 +321,6 @@ export default function Dashboard() {
 
     const filteredDatesheet =
         datesheet
-            .filter(
-                (exam) =>
-                    exam.semester ===
-                    user?.year
-            )
             .filter((exam) =>
                 (
                     exam.subject

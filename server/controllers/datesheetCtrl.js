@@ -27,6 +27,7 @@ export const createExam = async (req, res) => {
       user: req.user._id,
     });
 
+
     res.status(201).json(exam);
 
   } catch (error) {
@@ -46,11 +47,9 @@ export const createExam = async (req, res) => {
 export const getDateSheet = async (req, res) => {
   try {
 
-    const filters = {};
-
-    if (req.query.user) {
-      filters.user = req.query.user._id;
-    }
+    const filters = {
+      user: req.user._id,
+    };
 
     // FILTER BY SEMESTER
     if (req.query.semester) {
