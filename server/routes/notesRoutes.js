@@ -18,7 +18,7 @@ const router = express.Router();
 router
   .route("/")
   .post(protect, createNote)
-  .get(getNotes);
+  .get(protect, getNotes);
 
 
 // ======================================
