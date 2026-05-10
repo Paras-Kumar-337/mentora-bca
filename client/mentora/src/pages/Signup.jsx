@@ -132,7 +132,9 @@ export default function Signup() {
         courses: selectedCourses,
       });
 
-      navigate("/dashboard");
+      navigate("/dashboard", {
+        replace: true,
+      });
     } catch (error) {
       setSubmitError(
         error?.response?.data?.message ||

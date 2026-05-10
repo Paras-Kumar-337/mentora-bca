@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ProtectedRoute from "./components/ProtectedRoute";
+import PublicRoute from "./components/PublicRoute";
 import Dashboard from "./pages/Dashboard";
 import Career from "./pages/Career";
 import Community from "./pages/Community";
@@ -18,13 +20,62 @@ export default function Router() {
                 <Route path="/" element={<Landing />} />
                 <Route path="/features" element={<Features />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signup" element={<Signup />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/career" element={<Career />} />
-                <Route path="/community" element={<Community />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/ai" element={<Ai />} />
+                <Route
+                    path="/login"
+                    element={
+                        <PublicRoute>
+                            <Login />
+                        </PublicRoute>
+                    }
+                />
+                <Route
+                    path="/signup"
+                    element={
+                        <PublicRoute>
+                            <Signup />
+                        </PublicRoute>
+                    }
+                />
+                <Route
+                    path="/dashboard"
+                    element={
+                        <ProtectedRoute>
+                            <Dashboard />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/career"
+                    element={
+                        <ProtectedRoute>
+                            <Career />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/community"
+                    element={
+                        <ProtectedRoute>
+                            <Community />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/profile"
+                    element={
+                        <ProtectedRoute>
+                            <Profile />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/ai"
+                    element={
+                        <ProtectedRoute>
+                            <Ai />
+                        </ProtectedRoute>
+                    }
+                />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>

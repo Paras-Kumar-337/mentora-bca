@@ -6,6 +6,7 @@ export default function Profile() {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    avatar: "",
     password: "",
     confirmPassword: "",
     batch: "",
@@ -35,6 +36,7 @@ export default function Profile() {
                 ...prev,
                 name: data.name || "",
                 email: data.email || "",
+                avatar: data.avatar || "",
                 batch: data.batch || "",
                 year: data.year || "",
                 cgpa: data.cgpa || "",
@@ -71,6 +73,7 @@ async function handleSaveProfile() {
         const payload = {
             name: form.name,
             email: form.email,
+            avatar: form.avatar,
             batch: form.batch,
             year: form.year,
             cgpa: form.cgpa,
@@ -116,6 +119,35 @@ async function handleSaveProfile() {
         </div>
 
         <div className="mt-6 bg-white rounded-3xl shadow hover:shadow-xl transition-all duration-300 p-6 md:p-8 border border-gray-100 animate-fadeIn">
+
+          <div className="flex flex-col items-center mb-8">
+
+            {form.avatar ? (
+              <img
+                src={form.avatar}
+                alt="Profile"
+                className="w-24 h-24 rounded-full object-cover border-4 border-primary shadow-lg"
+              />
+            ) : (
+              <div className="w-24 h-24 rounded-full bg-primary text-white flex items-center justify-center text-3xl font-bold shadow-lg">
+                {form.name?.charAt(0)?.toUpperCase() || "N"}
+              </div>
+            )}
+
+            <input
+              name="avatar"
+              type="text"
+              placeholder="Paste profile image URL"
+              value={form.avatar}
+              onChange={handleChange}
+              className="mt-4 w-full md:w-[400px] border border-gray-200 rounded-full px-4 py-3 shadow-sm focus:border-primary outline-none transition-all duration-200"
+            />
+
+            <p className="text-xs text-textMuted mt-2 text-center">
+              Optional — add an image URL for your profile picture.
+            </p>
+
+          </div>
 
           {/* Form Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

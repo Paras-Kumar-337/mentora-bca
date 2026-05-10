@@ -38,6 +38,8 @@ export const getPosts = async (req, res) => {
   try {
 
     const posts = await Post.find()
+      .populate("author", "name avatar")
+      .populate("replies.user", "name avatar")
       .sort({ createdAt: -1 });
 
     res.status(200).json(posts);
@@ -71,7 +73,6 @@ export const addReply = async (req, res) => {
 
     const reply = {
       user: req.user._id,
-      name: req.user.name,
       content,
     };
 

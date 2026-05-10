@@ -57,6 +57,7 @@ export const signupUser = async (req, res) => {
       roll,
       specialization,
       courses,
+      avatar: req.body.avatar || "",
     });
 
 
@@ -65,6 +66,7 @@ export const signupUser = async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      avatar: user.avatar,
       token: generateToken(user._id),
     });
 
@@ -116,6 +118,7 @@ export const loginUser = async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      avatar: user.avatar,
       token: generateToken(user._id),
     });
 
@@ -181,6 +184,11 @@ export const updateUserProfile = async (req, res) => {
     user.courses =
       req.body.courses || user.courses;
 
+    user.avatar =
+      req.body.avatar !== undefined
+        ? req.body.avatar
+        : user.avatar;
+
 
     // OPTIONAL PASSWORD UPDATE
     if (req.body.password) {
@@ -195,6 +203,7 @@ export const updateUserProfile = async (req, res) => {
       _id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.email,
+      avatar: updatedUser.avatar,
       batch: updatedUser.batch,
       year: updatedUser.year,
       cgpa: updatedUser.cgpa,
