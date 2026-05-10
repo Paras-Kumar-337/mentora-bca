@@ -2,9 +2,7 @@ import { Navigate } from "react-router-dom";
 
 export default function PublicRoute({ children }) {
 
-  const token =
-    localStorage.getItem("token") ||
-    localStorage.getItem("userInfo");
+  const token = localStorage.getItem("mentoraUser");
 
   // USER ALREADY LOGGED IN
   if (token) {
