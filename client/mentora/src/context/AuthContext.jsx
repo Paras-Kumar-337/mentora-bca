@@ -114,9 +114,15 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
 
+    localStorage.removeItem(
+      "mentoraUser"
+    );
+
     logoutUser();
 
     setUser(null);
+
+    window.location.href = "/";
   };
 
 
