@@ -7,10 +7,13 @@ export default function Navbar() {
   const isPublicPage = ["/", "/login", "/signup"].includes(location.pathname);
 
   function handleLogout() {
-    localStorage.removeItem("userInfo");
-    localStorage.removeItem("token");
+    localStorage.removeItem("mentoraUser");
 
-    navigate("/login");
+    navigate("/", {
+      replace: true,
+    });
+
+    window.location.reload();
   }
 
   return (
@@ -40,8 +43,7 @@ export default function Navbar() {
           <button
             onClick={() => {
               const isLoggedIn =
-                localStorage.getItem("token") ||
-                localStorage.getItem("userInfo");
+                localStorage.getItem("mentoraUser");
 
               navigate(
                 isLoggedIn ? "/dashboard" : "/",

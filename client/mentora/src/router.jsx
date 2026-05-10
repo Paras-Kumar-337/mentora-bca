@@ -28,14 +28,7 @@ export default function Router() {
                         </PublicRoute>
                     }
                 />
-                <Route
-                    path="/signup"
-                    element={
-                        <PublicRoute>
-                            <Signup />
-                        </PublicRoute>
-                    }
-                />
+                <Route path="/signup" element={<Signup />} />
                 <Route
                     path="/dashboard"
                     element={
