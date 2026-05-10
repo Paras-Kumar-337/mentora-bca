@@ -17,10 +17,21 @@ export default function Footer() {
           </div>
 
 
-          <div className="flex flex-col gap-2 text-sm text-white/70">
-            <p>Paras Kumar</p>
-            <p>Pragati Yadav</p>
-            <p>Komal Yadav</p>
+          <div className="flex flex-col gap-3 text-sm text-white/70">
+
+            <div className="flex flex-col gap-2">
+              <p>Paras Kumar</p>
+              <p>Pragati Yadav</p>
+              <p>Komal Yadav</p>
+            </div>
+
+            <a
+              href="mailto:anejaparas337@gmail.com"
+              className="inline-flex items-center gap-2 w-fit px-4 py-2 rounded-full bg-white/10 hover:bg-white hover:text-primary transition-all duration-200 border border-white/10 shadow-sm backdrop-blur-sm"
+            >
+              Contact Developer
+            </a>
+
           </div>
 
         </div>
