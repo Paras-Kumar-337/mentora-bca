@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import { FiSearch, FiBell } from "react-icons/fi";
+import { FiSearch, FiBell, FiLock, FiUnlock, } from "react-icons/fi";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -617,15 +617,20 @@ export default function Dashboard() {
                                             !attendanceLocked
                                         )
                                     }
-                                    className={`text-xs px-3 py-1 rounded-full border transition-all duration-200 font-medium shadow-sm ${attendanceLocked
-                                            ? "bg-red-50 text-red-500 border-red-200 hover:bg-red-100"
-                                            : "bg-green-50 text-green-600 border-green-200 hover:bg-green-100"
+                                    title={
+                                        attendanceLocked
+                                            ? "Unlock Attendance"
+                                            : "Lock Attendance"
+                                    }
+                                    className={`w-10 h-10 flex items-center justify-center rounded-full border transition-all duration-200 shadow-sm ${attendanceLocked
+                                        ? "bg-red-50 text-red-500 border-red-200 hover:bg-red-100"
+                                        : "bg-green-50 text-green-600 border-green-200 hover:bg-green-100"
                                         }`}
                                 >
                                     {
                                         attendanceLocked
-                                            ? "🔒 Locked"
-                                            : "🔓 Unlocked"
+                                            ? <FiLock size={16} />
+                                            : <FiUnlock size={16} />
                                     }
                                 </button>
 
@@ -819,8 +824,8 @@ export default function Dashboard() {
                                     )
                                 }
                                 className={`text-sm px-3 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium hover:scale-[1.03] ${showNoteInput
-                                        ? "text-red-500 border border-red-500 hover:bg-red-100"
-                                        : "text-primary border border-primary hover:bg-blue-100"
+                                    ? "text-red-500 border border-red-500 hover:bg-red-100"
+                                    : "text-primary border border-primary hover:bg-blue-100"
                                     }`}
                             >
                                 {
@@ -971,8 +976,8 @@ export default function Dashboard() {
                                     )
                                 }
                                 className={`text-sm px-3 py-1 rounded-full cursor-pointer transition-all duration-200 font-medium hover:scale-[1.03] ${showExamInput
-                                        ? "text-red-500 border border-red-500 hover:bg-red-100"
-                                        : "text-primary border border-primary hover:bg-blue-100"
+                                    ? "text-red-500 border border-red-500 hover:bg-red-100"
+                                    : "text-primary border border-primary hover:bg-blue-100"
                                     }`}
                             >
                                 {
