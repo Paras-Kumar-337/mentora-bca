@@ -532,11 +532,36 @@ export default function Dashboard() {
 
                 {/* Dashboard header */}
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div>
-                        <h1 className="text-2xl font-heading text-textMain font-semibold">
-                            Welcome back, {user?.name || "Student"}!
-                        </h1>
-                        <p className="text-sm text-textMuted">Your Dashboard</p>
+                    <div className="flex items-center gap-4">
+
+                        {
+                            user?.avatar ? (
+                                <img
+                                    src={user.avatar}
+                                    alt="Profile"
+                                    className="w-14 h-14 rounded-full object-cover border-2 border-primary shadow-md"
+                                />
+                            ) : (
+                                <div className="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center text-xl font-bold shadow-md">
+                                    {user?.name?.charAt(0)?.toUpperCase() || "S"}
+                                </div>
+                            )
+                        }
+
+                        <div>
+                            <h1 className="text-2xl font-heading text-textMain font-semibold">
+                                Welcome back, {" "}
+                                <span className="text-primary">
+                                    {user?.name || "Student"}
+                                </span>
+                                !
+                            </h1>
+
+                            <p className="text-sm text-textMuted">
+                                Your Dashboard
+                            </p>
+                        </div>
+
                     </div>
 
                     {/* search + notifications */}
