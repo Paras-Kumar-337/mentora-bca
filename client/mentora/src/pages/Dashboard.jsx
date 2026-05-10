@@ -158,6 +158,8 @@ export default function Dashboard() {
 
     const [attendanceLoading, setAttendanceLoading] =
         useState(false);
+    const [attendanceLocked, setAttendanceLocked] =
+        useState(true);
 
     const [showExamInput, setShowExamInput] =
         useState(false);
@@ -602,26 +604,51 @@ export default function Dashboard() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6 animate-fadeIn">
                     {/* Attendance */}
                     <div className="bg-white rounded-2xl shadow p-6 h-full hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
-                        <div className="w-full flex justify-between items-start">
-                            <h3 className="font-semibold text-textMain">Attendance</h3>
-                            <select
-                                value={selectedSubject}
-                                onChange={(e) =>
-                                    setSelectedSubject(e.target.value)
-                                }
-                                className="text-sm text-primary font-medium border border-primary rounded-2xl px-2 py-1 outline-none"
-                            >
-                                {
-                                    availableSubjects.map((subject) => (
-                                        <option
-                                            key={subject}
-                                            value={subject}
-                                        >
-                                            {subject}
-                                        </option>
-                                    ))
-                                }
-                            </select>
+                        <div className="w-full flex justify-between items-start gap-3">
+                            <h3 className="font-semibold text-textMain">
+                                Attendance
+                            </h3>
+
+                            <div className="flex items-center gap-2 flex-wrap justify-end">
+
+                                <button
+                                    onClick={() =>
+                                        setAttendanceLocked(
+                                            !attendanceLocked
+                                        )
+                                    }
+                                    className={`text-xs px-3 py-1 rounded-full border transition-all duration-200 font-medium shadow-sm ${attendanceLocked
+                                            ? "bg-red-50 text-red-500 border-red-200 hover:bg-red-100"
+                                            : "bg-green-50 text-green-600 border-green-200 hover:bg-green-100"
+                                        }`}
+                                >
+                                    {
+                                        attendanceLocked
+                                            ? "🔒 Locked"
+                                            : "🔓 Unlocked"
+                                    }
+                                </button>
+
+                                <select
+                                    value={selectedSubject}
+                                    onChange={(e) =>
+                                        setSelectedSubject(e.target.value)
+                                    }
+                                    className="text-sm text-primary font-medium border border-primary rounded-2xl px-2 py-1 outline-none"
+                                >
+                                    {
+                                        availableSubjects.map((subject) => (
+                                            <option
+                                                key={subject}
+                                                value={subject}
+                                            >
+                                                {subject}
+                                            </option>
+                                        ))
+                                    }
+                                </select>
+
+                            </div>
                         </div>
                         <div className="mt-4 flex items-start gap-5">
                             <Donut
@@ -655,23 +682,25 @@ export default function Dashboard() {
                                 <div className="flex gap-2 mt-3 flex-wrap">
 
                                     <button
+                                        disabled={attendanceLocked}
                                         onClick={() =>
                                             handleMarkAttendance(
                                                 "present"
                                             )
                                         }
-                                        className="bg-primary text-white px-4 py-2 border-2 border-primary rounded-full hover:bg-transparent hover:text-primary hover:scale-[1.02] transition-all duration-200"
+                                        className="bg-primary text-white px-4 py-2 border-2 border-primary rounded-full hover:bg-transparent hover:text-primary hover:scale-[1.02] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-primary disabled:hover:text-white disabled:hover:scale-100"
                                     >
                                         {attendanceLoading ? "Updating..." : "Present"}
                                     </button>
 
                                     <button
+                                        disabled={attendanceLocked}
                                         onClick={() =>
                                             handleMarkAttendance(
                                                 "absent"
                                             )
                                         }
-                                        className="bg-red-500 text-white px-4 py-2 border-2 border-red-500 rounded-full hover:bg-transparent hover:text-red-500 hover:scale-[1.02] transition-all duration-200"
+                                        className="bg-red-500 text-white px-4 py-2 border-2 border-red-500 rounded-full hover:bg-transparent hover:text-red-500 hover:scale-[1.02] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-red-500 disabled:hover:text-white disabled:hover:scale-100"
                                     >
                                         {attendanceLoading ? "Updating..." : "Absent"}
                                     </button>
