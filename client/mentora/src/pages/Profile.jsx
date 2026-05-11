@@ -168,7 +168,7 @@ async function handleSaveProfile() {
             <input
               name="email"
               value={form.email}
-              onChange={handleChange}
+              disabled
               placeholder="Email"
               className="border border-gray-200 rounded-full px-4 py-3 shadow-sm focus:border-primary outline-none transition-all duration-200"
             />
