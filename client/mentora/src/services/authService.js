@@ -48,7 +48,7 @@ export async function sendResetOtp(
   email
 ) {
 
-  const { data } = await api.post(
+  const { data } = await API.post(
     "/auth/send-reset-otp",
     { email }
   );
@@ -64,7 +64,7 @@ export async function resetPassword(
   payload
 ) {
 
-  const { data } = await api.post(
+  const { data } = await API.post(
     "/auth/reset-password",
     payload
   );
