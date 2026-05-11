@@ -1,7 +1,11 @@
 import bcrypt from "bcryptjs";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import User from "../models/User.js";
 import generateToken from "../utils/generateToken.js";
+
+const resend = new Resend(
+  process.env.RESEND_API_KEY
+);
 
 
 // ============================
@@ -161,31 +165,13 @@ export const sendResetOtp = async (
 
     await user.save();
 
-    const transporter =
-      nodemailer.createTransport({
+    await resend.emails.send({
 
-        host: "smtp-relay.brevo.com",
+      from:
+        "Mentora <onboarding@resend.dev>",
 
-        port: 587,
-
-        secure: false,
-
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
-        },
-
-        tls: {
-          rejectUnauthorized: false,
-        },
-
-        connectionTimeout: 10000,
-
-      });
-
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
       to: email,
+
       subject:
         "Mentora Password Reset OTP",
 
