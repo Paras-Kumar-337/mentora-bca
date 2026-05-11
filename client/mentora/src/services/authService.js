@@ -40,6 +40,38 @@ export const loginUser = async (userData) => {
   return data;
 };
 
+// ======================================
+// SEND RESET OTP
+// ======================================
+
+export async function sendResetOtp(
+  email
+) {
+
+  const { data } = await api.post(
+    "/auth/send-reset-otp",
+    { email }
+  );
+
+  return data;
+}
+
+// ======================================
+// RESET PASSWORD
+// ======================================
+
+export async function resetPassword(
+  payload
+) {
+
+  const { data } = await api.post(
+    "/auth/reset-password",
+    payload
+  );
+
+  return data;
+}
+
 
 // ======================================
 // GET PROFILE

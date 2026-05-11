@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
+import ForgotPassword from "./pages/client/mentora/src/pages/ForgotPassword";
 import Dashboard from "./pages/Dashboard";
 import Career from "./pages/Career";
 import Community from "./pages/Community";
@@ -29,6 +30,10 @@ export default function Router() {
                     }
                 />
                 <Route path="/signup" element={<Signup />} />
+                <Route
+                    path="/forgot-password"
+                    element={<ForgotPassword />}
+                />
                 <Route
                     path="/dashboard"
                     element={

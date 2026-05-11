@@ -99,9 +99,12 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <div className="text-right text-sm text-primary mt-2 cursor-pointer font-medium hover:opacity-80 transition-all duration-200">
+          <Link
+            to="/forgot-password"
+            className="text-primary hover:underline"
+          >
             Forgot Password?
-          </div>
+          </Link>
 
           {
             error && (
@@ -110,7 +113,7 @@ export default function Login() {
               </p>
             )
           }
-          
+
           <button
             type="submit"
             disabled={loading}
